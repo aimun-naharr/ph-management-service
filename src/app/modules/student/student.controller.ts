@@ -32,19 +32,17 @@ const getAllStudents = createAsync(
   },
 );
 
-const deleteStudent = createAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
-    const { studentId } = req.params;
-    const result = await StudentServices.deleteStudentFromDB(studentId);
+const deleteStudent = createAsync(async (req: Request, res: Response) => {
+  const { studentId } = req.params;
+  const result = await StudentServices.deleteStudentFromDB(studentId);
 
-    sendResponse(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'Student is deleted succesfully',
-      data: result,
-    });
-  },
-);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Student is deleted succesfully',
+    data: result,
+  });
+});
 
 export const StudentControllers = {
   getAllStudents,

@@ -110,6 +110,11 @@ const studentSchema = new Schema<TStudent, StudentModel>(
       type: String,
       required: [true, 'Emergency contact number is required'],
     },
+    admissionSemester: {
+      type: Schema.ObjectId,
+      ref: 'Academic',
+      required: true,
+    },
     bloogGroup: {
       type: String,
       enum: {
